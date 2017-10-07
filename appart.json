@@ -1,15 +1,32 @@
 {
     "appartement":
         [{
-            "id":"1",
-            "name" :"Appartement 1",
+            "id":1,
+            "name" :"Appartement1",
             "location":"nanterre",
-            "ownerId":"21"
+            "ownerId":21,
+            "price":800
         },
         {
-            "id":"2",
-            "name" :"Appartement 2",
-            "location":"Pyrénées",
-            "ownerId":"12"
-        }]
+            "id":2,
+            "name" :"Appartement2",
+            "location":"paris",
+            "ownerId":12,
+            "price":700
+        },
+        {
+            "id":"3",
+            "name" :"Appartement3",
+            "location":"nanterre",
+            "ownerId":12,
+            "price":600
+        },
+        {
+            "id":4,
+            "name" :"Appartement4",
+            "location":"test",
+            "ownerId":12,
+            "price":500
+        }
+    ]
 }

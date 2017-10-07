@@ -18,11 +18,13 @@ router.get('/:id', function(request,response){
                 "id" : json.appartement[i].id, 
                 "name":json.appartement[i].name, 
                 "location":json.appartement[i].location, 
-                "ownerId":json.appartement[i].ownerId
+                "ownerId":json.appartement[i].ownerId,
+                "price":json.appartement[i].price
             };
         }
     }
     response.send(appart);
 });
+
 
 module.exports = router;
