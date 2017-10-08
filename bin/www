@@ -7,6 +7,22 @@
 var app = require('../app');
 var debug = require('debug')('myapp:server');
 var http = require('http');
+var mongoose = require('mongoose');
+
+
+/**
+ * Configuration.
+ */
+var config = require('../config/config.js');
+
+/**
+ * Setup mongo connection
+ */
+mongoose.connect(config.db);
+mongoose.connection.on('error', function() {
+    console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+});
+
 
 /**
  * Get port from environment and store in Express.
@@ -25,7 +41,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, function () {
+  console.log("LAUNCH ON PORT " + port);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
