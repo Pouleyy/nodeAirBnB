@@ -101,7 +101,7 @@ UserSchema.statics = {
      */
     remove(username) {
         findOneAndRemove({
-            username: category
+            username: username
             })
         .then(user => {
             return user
