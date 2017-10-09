@@ -111,4 +111,4 @@ LocationSchema.statics = {
 /**
  * @typedef user
  */
-module.exports = mongoose.model('Location', Location);
+module.exports = mongoose.model('Location', LocationSchema);
