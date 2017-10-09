@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
     .then(location => {
         res.status(200).json({info: "Location saved"});
     })
-    .catch(err => res.status(500).json({error: "Problem with the server, please try again"}));    
+    .catch(err => res.status(400).json({error: "Name might already be used"}));    
     
 });
 
