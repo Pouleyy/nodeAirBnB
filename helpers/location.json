@@ -1,0 +1,46 @@
+{
+    "location":
+        [{
+            "name" :"Appartement 1",
+            "ownerUsername":"test1",
+            "city":"Nanterre",
+            "price": 95,
+            "description": "Appartement très charmant de 30m2" 
+        },
+        {
+            "name" :"Appartement 2",
+            "ownerUsername":"test2",
+            "city":"Grenoble",
+            "price": 56,
+            "description": "Appartement très chaleureux proche gare" 
+        },
+        {
+            "name" :"Appartement 3",
+            "ownerUsername":"test2",
+            "city":"Grenoble",
+            "price": 75,
+            "description": "Appartement duplex en centre ville" 
+        },
+        {
+            "name" :"Appartement 4",
+            "ownerUsername":"test3",
+            "city":"Paris",
+            "price": 125,
+            "description": "Appartement près de gare de Lyon 30m2 dernier étage" 
+        },
+        {
+            "name" :"Appartement 5",
+            "ownerUsername":"test4",
+            "city":"Paris",
+            "price": 200,
+            "description": "Appartement duplex en centre ville"
+        },
+        {
+            "name" :"Appartement 6",
+            "ownerUsername":"test2",
+            "city":"Lyon",
+            "price": 90,
+            "description": "Maison de ville"
+        }
+    ]
+}
