@@ -65,7 +65,7 @@ router.put('/:name/book/:year/:month/:day', function(req,res){
     if(dateToBook.getTime() < dateNow.getTime()) {
         res.status(400).json({error: "You cannot book before today ;)"})
     } else {
-        let dateToBookString = year+month+day;
+        let dateToBookString = day+"/"+month+"/"+year;
         Location.getOne(name)
         .then(location => {
             if(location) {
