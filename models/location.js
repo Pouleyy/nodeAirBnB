@@ -1,4 +1,3 @@
-var bcrypt = require ("bcrypt"); 
 var mongoose = require("mongoose");
 
 LocationSchema = new mongoose.Schema({
@@ -36,11 +35,13 @@ LocationSchema = new mongoose.Schema({
 LocationSchema.statics = {
    
     /**
-     * Get all Location
-     * @returns {Promise<Location, Error>}
+        * Get all Location
+        * @param {String} query - This is the query for the research
+        * @returns {Promise<Location, Error>}
      */
-    getAll() {
-        return this.find({})
+    get(query) {
+        return this.find(query)
+            .select({_id: 0})
             .then(locations => {
                 if (locations) {
                     return locations;
@@ -61,6 +62,7 @@ LocationSchema.statics = {
         return this.findOne({
             name: nameToGet
             })
+            .select({_id: 0})            
             .then(location => {
                 if (location) {
                     return location;
@@ -100,6 +102,7 @@ LocationSchema.statics = {
     update(locationName, newDescription) {
          return this
             .findOne({name: locationName})
+            .select({_id: 0})            
             .then(location => {
                 location.description = newDescription;
                 return location.save();
@@ -113,20 +116,20 @@ LocationSchema.statics = {
      * @returns {Promise<Location>}
      */
     bookDate(location, bookedDate) {
-        return this
-           location.bookDate.push(bookedDate);
-           location.save();
+        location.bookedDate.push(bookedDate);
+        return location.save();
     },
 
      /**
      * remove location
      * @param {String} locationName - This is the name of the location
-     * @returns {Promise<location, Error>}
+     * @returns {Promise<Location, Error>}
      */
     remove(locationName) {
         findOneAndRemove({
             name: locationName
             })
+        .select({_id: 0})    
         .then(location => {
             return location
         })
