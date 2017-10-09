@@ -61,8 +61,7 @@ LocationSchema.statics = {
     getOne(nameToGet) {
         return this.findOne({
             name: nameToGet
-            })
-            .select({_id: 0})            
+            })          
             .then(location => {
                 if (location) {
                     return location;
@@ -101,8 +100,7 @@ LocationSchema.statics = {
      */
     update(locationName, newDescription) {
          return this
-            .findOne({name: locationName})
-            .select({_id: 0})            
+            .findOne({name: locationName})           
             .then(location => {
                 location.description = newDescription;
                 return location.save();
