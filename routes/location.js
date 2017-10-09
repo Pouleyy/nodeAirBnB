@@ -34,7 +34,6 @@ router.post('/', function(req, res) {
 /* GET Location by name. */
 router.get('/:name', function(req,res){
     let name = req.params.name;
-    console.log(name)
     Location.getOne(name)
     .then(location => {
         res.status(200).json(location);
@@ -77,7 +76,6 @@ router.put('/:name/book/:year/:month/:day', function(req,res){
                 } else {
                     Location.bookDate(location, dateToBookString)
                     .then(location => {
-                        console.log("Book");
                     })
                     .catch(err => res.status(500).json({error: "Problem with the server, please try again"}));
                     
