@@ -17,11 +17,11 @@ UserSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        required: true
+        required: true,
     },
     lastLogAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
     }
 });
 
@@ -94,13 +94,21 @@ UserSchema.statics = {
             });
     },
 
-     /**
+    /**
+     * Remove all User
+     * @returns {Promise}
+     */
+    deleteAll() {
+        return this.remove({});
+    },
+    
+    /**
      * remove user
      * @param {String} username - This is the username of the user
      * @returns {Promise<User, Error>}
      */
-    remove(username) {
-        findOneAndRemove({
+    deleteOne(username) {
+        return this.findOneAndRemove({
             username: username
             })
         .then(user => {

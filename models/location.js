@@ -4,7 +4,7 @@ LocationSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     ownerUsername: {
         type: String,
@@ -12,15 +12,15 @@ LocationSchema = new mongoose.Schema({
     },
     city: {
         type: String,
-        required: true
+        required: true,
     },
     price: {
         type: Number,
-        required: true
+        required: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
     bookedDate: [String], //Bad to store date with String but useful ATM
     onlineAt: {
@@ -118,16 +118,23 @@ LocationSchema.statics = {
         return location.save();
     },
 
-     /**
+    /**
+     * Remove all Location
+     * @returns {Promise}
+     */
+    deleteAll() {
+        return this.remove({});
+    },
+    
+    /**
      * remove location
-     * @param {String} locationName - This is the name of the location
+     * @param {String} name - This is the username of the location
      * @returns {Promise<Location, Error>}
      */
-    remove(locationName) {
-        findOneAndRemove({
-            name: locationName
+    deleteOne(name) {
+        return this.findOneAndRemove({
+            name: name
             })
-        .select({_id: 0})    
         .then(location => {
             return location
         })
