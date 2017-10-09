@@ -19,7 +19,7 @@ router.post("/", function(req, res) {
       let messageHTML = "<b>Welcome on AirBnB " + userName + ", you're now registered 😉</b>";
       sendMail(userName, userMail, subject, messageTexte, messageHTML,  res);
     })
-    .catch(err => res.status(500).json({error: "Username or mail might already be used"}));
+    .catch(err => res.status(400).json({error: "Username or mail might already be used"}));
   }else {
     res.status(400).json({error: "Problem with the information"})
   }
