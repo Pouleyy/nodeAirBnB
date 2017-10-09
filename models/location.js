@@ -23,8 +23,8 @@ LocationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    bookedDate: [Date],
-    onLineAt: {
+    bookedDate: [String], //Bad to store date with String but useful ATM
+    onlineAt: {
         type: Date,
         default: Date.now()
     }
@@ -36,11 +36,28 @@ LocationSchema = new mongoose.Schema({
 LocationSchema.statics = {
    
     /**
+     * Get all Location
+     * @returns {Promise<Location, Error>}
+     */
+    getAll() {
+        return this.find({})
+            .then(locations => {
+                if (locations) {
+                    return locations;
+                }
+                return Promise.reject(err);
+            })
+            .catch(err => {
+                return Promise.reject(err);
+            });
+    },
+
+    /**
      * Get Location
      * @param {String} nameToGet - This is the name of the location
      * @returns {Promise<Location, Error>}
      */
-    get(nameToGet) {
+    getOne(nameToGet) {
         return this.findOne({
             name: nameToGet
             })
@@ -89,6 +106,18 @@ LocationSchema.statics = {
             });
     },
 
+    /**
+     * Update booked date 
+     * @param {Location} location - This is the localisation
+     * @param {String} bookedDate - This is the date to booked
+     * @returns {Promise<Location>}
+     */
+    bookDate(location, bookedDate) {
+        return this
+           location.bookDate.push(bookedDate);
+           location.save();
+    },
+
      /**
      * remove location
      * @param {String} locationName - This is the name of the location
@@ -109,6 +138,6 @@ LocationSchema.statics = {
 
 
 /**
- * @typedef user
+ * @typedef location
  */
 module.exports = mongoose.model('Location', LocationSchema);
