@@ -64,7 +64,7 @@ LocationSchema.statics = {
      * @param {String} description - This is the description of the location
      * @returns {Promise<Location>}
      */
-    create(name, city, ownerUsername, price, description) {
+    create(name, ownerUsername, city, price, description) {
         let location = new this();
         location.name = name;
         location.city = city;
@@ -75,11 +75,10 @@ LocationSchema.statics = {
     },
 
     /**
-     * Update user 
-     * @param {String} usernameID - This is the username of the user
-     * @param {String} ownerUsername - This is the username of the owner of the location
-     * @param {String} location - This is the localisation of the location
-     * @returns {Promise<User>}
+     * Update location 
+     * @param {String} locationName - This is the name of the localisation
+     * @param {String} newDescription - This is the username of the owner of the location
+     * @returns {Promise<Location>}
      */
     update(locationName, newDescription) {
          return this
@@ -91,9 +90,9 @@ LocationSchema.statics = {
     },
 
      /**
-     * remove user
+     * remove location
      * @param {String} locationName - This is the name of the location
-     * @returns {Promise<User, Error>}
+     * @returns {Promise<location, Error>}
      */
     remove(locationName) {
         findOneAndRemove({
