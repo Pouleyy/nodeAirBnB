@@ -41,8 +41,10 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+var populate = require("../helpers/populate");
 
 server.listen(port, function () {
+  populate.populate();
   console.log("LAUNCH ON PORT " + port);
 });
 server.on('error', onError);
