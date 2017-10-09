@@ -42,11 +42,9 @@ router.get('/:name', function(req,res){
 });
 
 /* GET Location by owner name. */
-router.get('/:name/owner/:ownername', function(req,res){
-    let name = req.params.name;
+router.get('/owner/:ownername', function(req,res){
     let ownername = req.params.ownername;
     let query = {
-        name: name,
         ownerUsername: ownername
     };
     Location.get(query)
