@@ -48,7 +48,6 @@ router.put("/login", function(req, res) {
     })
     .catch(err => res.status(500).json({error: "Problem with the server"}))
   } else {
-    console.log(req.body)
     res.status(400).json({error: "Problem with the information"})
   }
 })
@@ -86,8 +85,7 @@ function sendMail(userName, userMail, subject, messageText, messageHTML, res) {
        transporter.sendMail(mailOptions, (error, info) => { 
            if (error) { 
             res.status(500).json({error: "We processed your request but the email wasn't send due to internal server error"});
-           } 
-           console.log("ICI")
+           }
            res.status(201).json({confirmationMail: nodemailer.getTestMessageUrl(info)});
        }); 
    }); 
