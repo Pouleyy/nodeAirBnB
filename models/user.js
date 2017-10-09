@@ -52,6 +52,7 @@ UserSchema.statics = {
         return this.findOne({
             username: usernameToGet
             })
+            .select({_id: 0})            
             .then(user => {
                 if (user) {
                     return user;
@@ -88,6 +89,7 @@ UserSchema.statics = {
     update(usernameID) {
          return this
             .findById(usernameID)
+            .select({_id: 0})            
             .then(user => {
                 user.lastLogAt = Date.now();
                 return user.save();
