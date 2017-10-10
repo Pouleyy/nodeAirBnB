@@ -1,5 +1,5 @@
 # AirBnB like in NodeJS
-##Ingésup project
+## Ingésup project
 
 ## Features
 - Create user, login (no token ATM)
@@ -20,13 +20,13 @@ $ npm install
 $ npm start
 #Launch on port 9000 by default
 ```
-#####Populate
+##### Populate
 * At launch it will populate your database /w fake data. All the data are in /helpers in JSON file. It's easier to test /w data in DB
 
 
 ### Endpoint
 
-####User 
+#### User 
 * Create a user, you need to put his username, password and mail in the body. Username and mail must be unique.
 ```
 POST : /users
@@ -37,7 +37,7 @@ POST : /users
 PUT : /users/login
 ```
 
-####Location
+#### Location
 * Get all location
 ```
 GET : /location/
