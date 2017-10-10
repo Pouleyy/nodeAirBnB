@@ -2,23 +2,27 @@
     "user":
         [{
             "username" :"test1",
-            "password":"test1",
-            "email":"test1@test.com"
+            "password":"test",
+            "email":"test1@test.com",
+            "surname": "Pierre"
         },
         {
             "username" :"test2",
-            "password":"test2",
-            "email":"test2@test.com"
+            "password":"test",
+            "email":"test2@test.com",
+            "surname": "Clement"
         },
         {
             "username" :"test3",
-            "password":"test3",
-            "email":"test3@test.com"
+            "password":"test",
+            "email":"test3@test.com",
+            "surname": "Paul"
         },
         {
             "username" :"test4",
-            "password":"test4",
-            "email":"test4@test.com"   
+            "password":"test",
+            "email":"test4@test.com",
+            "surname": "Fred"
         }
     ]
 }
