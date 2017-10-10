@@ -11,6 +11,7 @@ router.post("/", function(req, res) {
   let userName = req.body.username;
   let userPwd = req.body.password;
   let userMail = req.body.mail;
+  let userSurname = req.body.surname;
   if(checkInfo(userName, userPwd, userMail)) {
     User.create(userName, userPwd, userMail)
     .then(user => {
@@ -25,6 +26,22 @@ router.post("/", function(req, res) {
   }
 });
 
+/**
+ * Update a user, only surname or password
+ */
+
+router.put("/profile/:username", function(req, res) {
+  let userName = req.params.username;
+  let surname = req.body.surname;
+  let userPwd = req.body.password;
+  console.log(userName+surname+userPwd)
+  User.update(userName, surname, userPwd)
+    .then(user => {
+      console.log(user);
+      res.status(200).json({info: "User updated"})
+    })
+    .catch(err => res.status(500).json({error: "Problem while updating your profile"}));
+});
 
 /**
  * Log a user
@@ -37,7 +54,7 @@ router.put("/login", function(req, res) {
     User.exist(userName)
     .then(user => {
       if (user && bcrypt.compareSync(userPwd, user.password)) {
-        User.update(user._id)
+        User.log(user._id)
         .then(userLogged => {
           res.status(200).json({info: "User logged"})
         })
