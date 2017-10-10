@@ -2,7 +2,7 @@
 ## Ingésup project
 
 ## Features
-- Create user, login (no token ATM)
+- Create user, login (no JWT ATM), update
 - Create location, update, book, get location /w paramaters (price & city)
 
 ## Prerequisites
@@ -30,6 +30,11 @@ $ npm start
 * Create a user, you need to put his username, password and mail in the body. Username and mail must be unique.
 ```
 POST : /users
+```
+
+* Update a user, password and surname are in the body. Only surname and password can be modified.
+```
+PUT : /users/profile/:username
 ```
 
 * Log a user, you need to put his username, password and mail in the body.
