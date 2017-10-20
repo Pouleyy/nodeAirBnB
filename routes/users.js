@@ -60,7 +60,6 @@ router.put("/login", function(req, res) {
         })
         .catch(err => res.status(500).json({error: "Problem with the server"}))
       } else {
-        res.status(05).json({error: "Method not allowed"})
         res.status(405).json({error: "Method not allowed"})
       }
     })
@@ -68,7 +67,29 @@ router.put("/login", function(req, res) {
   } else {
     res.status(400).json({error: "Problem with the information"})
   }
-})
+});
+router.delete("/profile/:username",function(req,res){
+  let userName = req.params.username;
+  let userPwd = req.body.password;
+  let userMail = req.body.mail;  
+  if (checkInfo(userName, userPwd, userMail)) {
+    User.exist(userName)
+    .then(user => {
+      if (user && bcrypt.compareSync(userPwd, user.password)) {
+        User.deleteOne(user.userName)
+        .then(userLogged => {
+          res.status(200).json({info: "User deleted"})
+        })
+        .catch(err => res.status(500).json({error: "Problem with the server"}))
+      } else {
+        res.status(405).json({error: "Method not allow"})
+      }
+    })
+    .catch(err => res.status(500).json({error: "Problem with the server"}))
+  } else {
+    res.status(400).json({error: "Problem with the information"})
+  } 
+});
 
 //TODO DELETE A USER, BUT DUE TO NO REAL LOG SYSTEM, IT'S DANGEROUS
 
