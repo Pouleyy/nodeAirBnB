@@ -57,10 +57,10 @@ router.put("/login", function(req, res) {
         User.log(user._id)
         .then(userLogged => {
           res.status(200).json({info: "User logged"})
-        })
+        })''
         .catch(err => res.status(500).json({error: "Problem with the server"}))
       } else {
-        res.status(205).json({error: "Method not allowed"})
+        res.status(05).json({error: "Method not allowed"})
       }
     })
     .catch(err => res.status(500).json({error: "Problem with the server"}))
