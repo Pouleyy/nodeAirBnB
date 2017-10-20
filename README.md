@@ -2,7 +2,7 @@
 ## Ingésup project
 
 ## Features
-- Create user, login (no JWT ATM), update
+- Create user, login (no JWT ATM), update, delete
 - Create location, update, book, get location /w paramaters (price & city)
 
 ## Prerequisites
@@ -67,4 +67,10 @@ GET : /location/owner/:ownername
 * Book a location for a day
 ```
 PUT : /location/:name/book/:year/:month/:day
+```
+
+#### Chat 
+* Chat between people
+```
+POST : /chat
 ```
