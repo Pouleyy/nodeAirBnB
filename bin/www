@@ -19,7 +19,7 @@ var config = require('../config/config.js');
 /**
  * Setup mongo connection
  */
-mongoose.connect(config.db);
+mongoose.connect(config.uri);
 mongoose.connection.on('error', function() {
     console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
 });
