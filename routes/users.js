@@ -61,6 +61,7 @@ router.put("/login", function(req, res) {
         .catch(err => res.status(500).json({error: "Problem with the server"}))
       } else {
         res.status(05).json({error: "Method not allowed"})
+        res.status(405).json({error: "Method not allowed"})
       }
     })
     .catch(err => res.status(500).json({error: "Problem with the server"}))
