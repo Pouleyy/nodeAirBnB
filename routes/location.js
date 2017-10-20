@@ -86,6 +86,15 @@ router.put('/:name/book/:year/:month/:day', function(req,res){
         .catch(err => res.status(500).json({error: "Problem with the server, please try again"}));    
     }
 });
+router.delete('/:name', function(req,res){
+    let name = req.params.name; 
+         Location.deleteOne(name)
+        .then(location => {
+            res.status(200).json({info: "Location deleted"})
+          })
+        .catch(err => res.status(500).json({error: "Probleme lors de la suppresion"}))  
+
+});
 
 function makeQuery(req) {
     var query = {};
